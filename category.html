@@ -20,35 +20,30 @@
   <body>
     <header></header>
 
-    <div class="text-center mt-5">
-      <h1>Bienvenid@ a nuestra tienda digital</h1>
-      <br />
-    </div>
-
 
     <div class="container-products">
       <div class="row" id="cards"></div>
     
-    <template id="template-card">
-      <div class="col-12 mb-3 col-md-2 ">
-        <div class="card text-center" style="width: 12rem; height: 23rem;">
-          <img class="card-img-top mx-auto" style="width: 8rem; height: 8rem;" src=".." alt="" />
-          <div class="card-body">
-            <h5 class="card-title">Producto</h5>
-            <p class="card-text">Precio</p>
-            <p class="card-text text-danger">Descuento: <span class="text-danger" id="disscount"></span> %</p>
-            <button href="#" class="btn btn-outline-dark">
-              Agregar <i class="bi bi-cart-plus"></i>
-            </button>
+      <template id="template-card">
+        <div class="col-12 mb-3 col-md-2 mt-5 ms-5">
+          <div class="card text-center" style="width: 12rem; height: 23rem;">
+            <img class="card-img-top mx-auto" style="width: 8rem; height: 8rem;" src=".." alt="" />
+            <div class="card-body">
+              <h5 class="card-title">Producto</h5>
+              <p class="card-text">Precio</p>
+              <p class="card-text text-danger">Descuento: <span class="text-danger" id="disscount"></span> %</p>
+              <button href="#" class="btn btn-outline-dark">
+                Agregar <i class="bi bi-cart-plus"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    </template>
+      </template>
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/js/header.js"></script>
-    <script type="module" src="/js/app.js"></script>
+    <script src="/js/category.js"></script>
   </body>
 </html>

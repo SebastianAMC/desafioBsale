@@ -1,19 +1,16 @@
+let carrito = {}
+export {carrito};
+
 const fragment = document.createDocumentFragment()
 const templateCard = document.getElementById('template-card').content
 const cards = document.getElementById('cards')
-const templateFooter = document.getElementById('template-footer').content
-const templateCarrito = document.getElementById('template-carrito').content
-const items = document.getElementById('items')
-const footer = document.getElementById('footer')
-
-let carrito = {}
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchData()
-    if(localStorage.getItem('carrito')){
+ /*    if(localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito'))
         pintarCarrito()
-    }
+    } */
 })
 
 cards.addEventListener('click', e =>{
@@ -32,18 +29,21 @@ const fetchData = async () => {
     }
 }
 
+const img = document.createElement("img");
+img.src = "../images/unknown.png";
+
 const pintarProductos = data => {
     data.forEach(producto=>{
-        templateCard.querySelector('img').setAttribute('src', producto.url_image)
+        if (producto.url_image === null){
+            templateCard.querySelector('img').setAttribute('src', img.src)
+        }else if (producto.url_image === ''){
+            templateCard.querySelector('img').setAttribute('src', img.src)
+        }else{
+            templateCard.querySelector('img').setAttribute('src', producto.url_image)
+        }
         templateCard.querySelector('h5').textContent = producto.name
         templateCard.querySelector('p').textContent = producto.price
-        let productDiscount = producto.discount
-        if (productDiscount === 0){
-            templateCard.querySelector('.text-danger').textContent = ""
-        }
-        else{
-            templateCard.querySelector('.text-danger').textContent = producto.discount + ' % de descuento'
-        }
+        templateCard.querySelector('span').textContent = producto.discount
         templateCard.querySelector('.btn-outline-dark').dataset.id = producto.id
         
         const clone = templateCard.cloneNode(true)
@@ -54,7 +54,7 @@ const pintarProductos = data => {
 }
 
 
-const addCarrito = e =>{
+ const addCarrito = e =>{
     if (e.target.classList.contains('btn-outline-dark')){
       setCarrito(e.target.parentElement)
     }
@@ -77,10 +77,10 @@ if(carrito.hasOwnProperty(producto.id)){
 
 carrito[producto.id] = {...producto}
 
-pintarCarrito();
+//pintarCarrito();
 }
 
-const pintarCarrito= () => {
+/* const pintarCarrito= () => {
     items.innerHTML = ''
     Object.values(carrito).forEach(producto => {
         templateCarrito.querySelector('th').textContent = producto.id
@@ -148,4 +148,4 @@ const btnAccion = e => {
      }
 
      e.stopPropagation()
-}
+} */
