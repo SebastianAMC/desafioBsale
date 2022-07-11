@@ -74,21 +74,26 @@
         </ul>
       </form>
       <div class="d-flex me-5">
-        <button class="btn btn-sm btn-warning">
-          Mi Carrito <i class="bi bi-cart"></i>
-        </button>
+        <a href="/cart.html">
+          <button class="btn btn-sm btn-warning" style="margin-left: 25em;">
+            Mi Carrito <i class="bi bi-cart"></i>
+          </button>
+        </a>
       </div>
-      <form class="d-flex" role="search">
+      <div class="d-flex float-end">
         <input
           class="form-control me-2"
           type="search"
           placeholder="Busca un producto"
           aria-label="Search"
+          name="searchProduct"
+          id="searchProduct"
         />
-        <button class="btn btn-outline-warning btn-sm" type="submit">
+        <button class="btn btn-outline-warning btn-sm" id="searchButton" type="button">
           Buscar
         </button>
-      </form>
+      </div>
+ 
     </div>
   </div>
 </nav>

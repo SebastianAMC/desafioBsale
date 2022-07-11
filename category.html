@@ -26,12 +26,12 @@
     
       <template id="template-card">
         <div class="col-12 mb-3 col-md-2 mt-5 ms-5">
-          <div class="card text-center" style="width: 12rem; height: 23rem;">
+          <div class="card text-center" style="width: 12rem; height: 23rem; box-shadow: 5px 5px 5px rgb(228, 228, 228); ">
             <img class="card-img-top mx-auto" style="width: 8rem; height: 8rem;" src=".." alt="" />
             <div class="card-body">
               <h5 class="card-title">Producto</h5>
               <p class="card-text">Precio</p>
-              <p class="card-text text-danger">Descuento: <span class="text-danger" id="disscount"></span> %</p>
+              <p class="card-text text-danger" id="discountLine">Descuento: <span class="text-danger" id="discount"></span> %</p>
               <button href="#" class="btn btn-outline-dark">
                 Agregar <i class="bi bi-cart-plus"></i>
               </button>

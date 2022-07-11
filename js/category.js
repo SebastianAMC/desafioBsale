@@ -4,15 +4,14 @@ const cards = document.getElementById('cards')
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchData()
- /*    if(localStorage.getItem('carrito')){
-        carrito = JSON.parse(localStorage.getItem('carrito'))
-        pintarCarrito()
-    } */
-})
+     if(localStorage.getItem('cart')){
+        cart = JSON.parse(localStorage.getItem('cart'))
+}})
+
+let cart = JSON.parse(localStorage.getItem('cart'));
 
 cards.addEventListener('click', e =>{
-    addCarrito(e)
-
+    addCart(e)
 })
 
 const fetchData = async () => {
@@ -20,7 +19,8 @@ const fetchData = async () => {
         let id = localStorage.getItem('id');
         const res = await fetch('http://localhost:4000/api/products/'+id)
         const data = await res.json()
-        pintarProductos(data)
+        showProducts(data)
+        localStorage.removeItem('id');
 
     } catch (error) {
         console.log(error)
@@ -30,19 +30,28 @@ const fetchData = async () => {
 const img = document.createElement("img");
 img.src = "../images/unknown.png";
 
-const pintarProductos = data => {
-    data.forEach(producto=>{
-        if (producto.url_image === null){
+const showProducts = data => {
+    data.forEach(product=>{
+        if (product.url_image === null){
             templateCard.querySelector('img').setAttribute('src', img.src)
-        }else if (producto.url_image === ''){
+        }else if (product.url_image === ''){
             templateCard.querySelector('img').setAttribute('src', img.src)
         }else{
-            templateCard.querySelector('img').setAttribute('src', producto.url_image)
+            templateCard.querySelector('img').setAttribute('src', product.url_image)
         }
-        templateCard.querySelector('h5').textContent = producto.name
-        templateCard.querySelector('p').textContent = producto.price
-        templateCard.querySelector('span').textContent = producto.discount
-        templateCard.querySelector('.btn-outline-dark').dataset.id = producto.id
+
+        templateCard.querySelector('h5').textContent = product.name
+        templateCard.querySelector('p').textContent = product.price
+        
+    if(product.discount !== 0 && product.discount !== null){
+            templateCard.querySelector('#discount').textContent = product.discount
+            templateCard.querySelector('#discountLine').style.visibility = '' 
+        } else{  
+            templateCard.querySelector('#discount').textContent = product.discount
+            templateCard.querySelector('#discountLine').style.visibility = 'hidden' 
+        }  
+        
+        templateCard.querySelector('.btn-outline-dark').dataset.id = product.id
         
         const clone = templateCard.cloneNode(true)
         fragment.appendChild(clone)
@@ -51,27 +60,29 @@ const pintarProductos = data => {
     cards.appendChild(fragment)
 }
 
-
- const addCarrito = e =>{
+ const addCart = e =>{
     if (e.target.classList.contains('btn-outline-dark')){
-      setCarrito(e.target.parentElement)
+      setCart(e.target.parentElement)
+      alert('Agregado al carrito');
     }
     e.stopPropagation();
 }
 
-const setCarrito = objeto => {
-    const producto = {
-        id: objeto.querySelector('.btn-outline-dark').dataset.id,
-        name: objeto.querySelector('h5').textContent,
-        price: objeto.querySelector('p').textContent,
-        discount: objeto.querySelector('.text-danger').textContent,
+const setCart = object => {
+    const product = {
+        id: object.querySelector('.btn-outline-dark').dataset.id,
+        name: object.querySelector('h5').textContent,
+        price: object.querySelector('p').textContent,
+        discount: object.querySelector('#discount').textContent,
         amount: 1
-
     }
 
-if(carrito.hasOwnProperty(producto.id)){
-    producto.amount = carrito[producto.id].amount +1
+if(cart.hasOwnProperty(product.id)){
+    product.amount = cart[product.id].amount +1
 }
 
-carrito[producto.id] = {...producto}
+cart[product.id] = {...product}
+
+localStorage.setItem('cart', JSON.stringify(cart))
+
 }
