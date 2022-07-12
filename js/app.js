@@ -27,7 +27,7 @@ const fetchData = async () => {
 }
 
 const img = document.createElement("img");
-img.src = "../images/unknown.png";
+img.src = "./images/unknown.png";
 
 const showProducts = data => {
     data.forEach(product=>{
