@@ -33,18 +33,22 @@ const showCart = () => {
 }
 
 const showFooter = () => {
+    
     footer.innerHTML = ''
+    
     if (Object.keys(cart).length === 0){
         footer.innerHTML = `
         <th scope="row" colspan="5">El carrito se encuentra sin productos</th>
         `
         return
     }
-
+    
     const nAmount = Object.values(cart).reduce((acc,{amount})=> acc + amount, 0)
+    
     const nPrice = Object.values(cart).reduce((acc, {amount, price, discount}) => {
-        
+    
         let result = 0
+
         if(discount !==0 && discount !== null){
             const discountFooter = price * discount / 100;
             result = (price - discountFooter) * amount;
@@ -55,19 +59,18 @@ const showFooter = () => {
         return acc + result;
     },0)
 
-    templateFooter.querySelectorAll('td')[0].textContent = nAmount
-    templateFooter.querySelector('span').textContent = nPrice
-
-    const clone = templateFooter.cloneNode(true)
-    fragment.appendChild(clone)
-    footer.appendChild(fragment)
-
-    const btnVaciar = document.getElementById('emptyCart')
-    btnVaciar.addEventListener('click', () => {
-        localStorage.removeItem('cart')
-        cart={}
-        showCart()
-    })
+        templateFooter.querySelectorAll('td')[0].textContent = nAmount
+        templateFooter.querySelector('span').textContent = nPrice
+        const clone = templateFooter.cloneNode(true)
+        fragment.appendChild(clone)
+        footer.appendChild(fragment)
+        const btnVaciar = document.getElementById('emptyCart')
+        
+        btnVaciar.addEventListener('click', () => {
+            localStorage.removeItem('cart')
+            cart={}
+            showCart()
+        })
 }
 
 items.addEventListener('click', (e) =>{
