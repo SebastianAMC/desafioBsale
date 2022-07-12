@@ -17,7 +17,7 @@ cards.addEventListener('click', e =>{
 
 const fetchData = async () => {
     try {
-        const res = await fetch('http://localhost:4000/api/products')
+        const res = await fetch('https://desafiobsalebackend.herokuapp.com/api/products')
         const data = await res.json()
         showProducts(data)
 

@@ -13,7 +13,7 @@ const searchProduct = async () => {
     }
 
     try {
-        const res = await fetch('http://localhost:4000/api/products/search?product='+ search);
+        const res = await fetch('https://desafiobsalebackend.herokuapp.com/api/products/search?product='+ search);
         const data = await res.json();
         localStorage.setItem('search', JSON.stringify(data));
         window.location.href = "../search.html";
