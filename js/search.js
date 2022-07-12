@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cart = JSON.parse(localStorage.getItem('cart'))
 }})
 
-let cart = JSON.parse(localStorage.getItem('cart'));
+let cart = {};
 
 cards.addEventListener('click', e =>{
     addCart(e)
