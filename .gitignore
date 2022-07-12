@@ -1,6 +1,1 @@
-.gitignore
-node_modules
 package-lock.json
-search.js
-searchProduct.js
-search.html

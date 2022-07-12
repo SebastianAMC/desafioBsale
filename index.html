@@ -18,33 +18,33 @@
     <title>Tienda de productos -Bsale-</title>
   </head>
   <body>
-    <header></header>
+    <header> 
+    </header>
 
     <div class="text-center mt-5" style="color:white; text-shadow: 0.1em 0.1em 0.3em black">
       <h1>Bienvenid@ a nuestra tienda digital</h1>
-      <br />
+    <br/>
     </div>
-
 
     <div class="container-products">
-      <div class="row" id="cards"></div>
-    
-    <template id="template-card">
-      <div class="col-12 mb-3 col-md-2 ">
-        <div class="card text-center" style="width: 12rem; height: 23rem; box-shadow: 5px 5px 5px rgb(228, 228, 228);">
-          <img class="card-img-top mx-auto" style="width: 8rem; height: 8rem;" src=".." alt="" />
-          <div class="card-body">
-            <h5 class="card-title">Producto</h5>
-            <p class="card-text">Precio</p>
-            <p class="card-text text-danger" id="discountLine">Descuento: <span class="text-danger" id="discount"></span> %</p>
-            <button href="#" class="btn btn-outline-dark">
-              Agregar <i class="bi bi-cart-plus"></i>
-            </button>
+      <div class="row" id="cards">
+      </div>
+      <template id="template-card">
+        <div class="col-12 mb-3 col-md-2 ">
+          <div class="card text-center" style="width: 12rem; height: 23rem; box-shadow: 5px 5px 5px rgb(228, 228, 228);">
+            <img class="card-img-top mx-auto" style="width: 8rem; height: 8rem;" src=".." alt="" />
+            <div class="card-body">
+              <h5 class="card-title">Producto</h5>
+              <p class="card-text">Precio</p>
+              <p class="card-text text-danger" id="discountLine">Descuento: <span class="text-danger" id="discount"></span> %</p>
+              <button href="#" class="btn btn-outline-dark">
+                Agregar <i class="bi bi-cart-plus"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </template>
     </div>
-    </template>
 
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>

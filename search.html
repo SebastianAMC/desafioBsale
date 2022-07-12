@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link rel="icon" href="" type="image/x-icon" />
+    <title>Tienda de productos -Bsale-</title>
+  </head>
+
+  <body>
+    <header>
+    </header>
+
+    <div class="container-products">
+      <h4 id="empty" class="text-center mt-5"> </h4>
+      <div class="row" id="cards"></div>
+      <template id="template-card">
+        <div class="col-12 mb-3 col-md-2 mt-5 ms-5">
+          <div class="card text-center" style="width: 12rem; height: 23rem; box-shadow: 5px 5px 5px rgb(228, 228, 228); ">
+            <img class="card-img-top mx-auto" style="width: 8rem; height: 8rem;" src=".." alt="" />
+            <div class="card-body">
+              <h5 class="card-title">Producto</h5>
+              <p class="card-text">Precio</p>
+              <p class="card-text text-danger" id="discountLine">Descuento: <span class="text-danger" id="discount"></span> %</p>
+              <button href="#" class="btn btn-outline-dark">
+                Agregar <i class="bi bi-cart-plus"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/js/header.js"></script>
+    <script src="/js/search.js"></script>
+  </body>
+</html>
